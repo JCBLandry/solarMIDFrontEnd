@@ -1,10 +1,7 @@
-
-
 {
-  "name": "solarmidfrontend",
-  "version": "1.0.0",
-  "description": "Front End Interface for the Solar Magic Item Database",
-  "main": "index.js",
+  "name": "solar-mid",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -22,17 +19,16 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JCBLandry/solarMIDFrontEnd.git"
-  },
-  "keywords": [
-    "larp"
-  ],
-  "author": "Justin Landry",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JCBLandry/solarMIDFrontEnd/issues"
-  },
-  "homepage": "https://github.com/JCBLandry/solarMIDFrontEnd#readme"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
