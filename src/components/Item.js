@@ -51,7 +51,7 @@ class Item extends Component {
                     <ol className="item">
                     {
                         items.map(item => (
-                            <li key={item.id} align="start">
+                            <li className="border" key={item.id} align="start">
                                 <div>
                                     <p>Name: {item.name}</p>
                                     <p>Details: {item.details}</p>

@@ -2,7 +2,11 @@
 import React from 'react';
 import Item from './Item'
 import ItemInput from './ItemInput'
+import "./item.scss"
 
+const style = {
+  border: "1px solid blue"
+}
 const ItemPage = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -15,8 +19,10 @@ const ItemPage = () => {
     <div className="App">
       <h1 className="Header">Cerroneth Magic Item Database</h1>
       <div>
-          <ItemInput />
+        <ItemInput />
+        <div style={style}>
         <Item />
+        </div>
       </div>
     </div>
   );
