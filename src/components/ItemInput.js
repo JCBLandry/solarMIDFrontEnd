@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
+import NewItemForm from '../components/NewItemForm.js';
 
 class ItemInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      realm:"",
-      expires: "",
-      magical: "",
-      charges: "",
-      details: "",
-      writtenBy: "",
-      dateWritten: "",
-      formalSpaceRemaining: 0,
+      oopDesc: "",
+      vesselMat: "",
+      vesselType: "",
+      enchantments: "",
+      createdDate: Date(),
+      expirationDateEarth: "",
+      expirationDateCelestial: "",
       formalSpaceTotal: 0,
-      lastplayer: "",
+      formalSpaceRemaining: 0,
+      socketID: 0,
+      socketAmount: 0,
+      writtenBy: "",
+      lastEditBy: "",
+      lastEditReason: "",
+      lastEditDate: Date(),
+      lastPlayer: "",
       hiddenDetail: ""
      };
   }
-
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
   }
@@ -48,27 +54,11 @@ handlechange = (e) =>{
       
   })
 }
+
+  
   render() {
     return (
-      <div>
-      <form onSubmit={this.handleSubmit}>
-      <input onChange= {this.handlechange} type="text" placeholder="name" name="name" />
-      <input onChange= {this.handlechange} type="text" placeholder="Realm" name="realm"  />
-      <input onChange= {this.handlechange} type="text" placeholder="Expires" name="expires"  />
-      <input onChange= {this.handlechange} type="text" placeholder="Magical?" name="magical"  />
-      {/* <input type="text" placeholder="number" name="number"  /> */}
-      <input onChange= {this.handlechange} type="number" placeholder="Charges" name="charges"  />
-      {/* <input type="text" placeholder="chargeLikeDetail" name="chargeLikeDetail"  /> */}
-      <input onChange= {this.handlechange} type="text" placeholder="Details" name="details"  />
-      <input onChange= {this.handlechange} type="text" placeholder="Written By" name="writtenBy"  />
-      <input onChange= {this.handlechange} type="text" placeholder="Date Written" name="dateWritten"  />
-      <input onChange= {this.handlechange} type="number" placeholder="Formal Space Total" name="formalSpaceTotal"  />
-      <input onChange= {this.handlechange} type="number" placeholder="Formal Space Remaining" name="formalSpaceRemaining"  />
-      <input onChange= {this.handlechange} type="text" placeholder="Last Player" name="lastplayer"  />
-
-      <input type="submit" />
-    </form>
-    </div>
+      <NewItemForm />
     );
   }
 }

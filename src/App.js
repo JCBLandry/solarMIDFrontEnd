@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./components/Login";
 import PrivateRoute from './components/PrivateRoute'
 import ItemPage from './components/ItemPage'
+import './styles/app.css';
 // import "./styles.scss";
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
   
   return (
     <Router>
-      <div className="App">
+      <div className="App font-bold">
         <Route exact path="/" component={ItemPage} />
         {/* 
           Build a PrivateRoute component that will 
