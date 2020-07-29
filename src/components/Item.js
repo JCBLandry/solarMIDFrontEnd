@@ -51,18 +51,37 @@ class Item extends Component {
                     <ol className="item">
                     {
                         items.map(item => (
-                            <li className="border" key={item.id} align="start">
+                            <li className="" key={item.id} align="start">
                                 <div>
-                                    <p>Name: {item.name}</p>
-                                    <p>Details: {item.details}</p>
-                                    <p>Realm: {item.realm}</p>
-                                    <p>Expires: {item.expires}</p>
-                                    <p>Written By: {item.writtenBy}</p>
-                                    <p>Date Written: {item.dateWritten}</p>
-                                    <p>Formal Space Total: {item.formalSpaceTotal}</p>
+                                    <div className="bg-red-200 p-3 m-5">
+                                        <p>Name: {item.name}</p>
+                                        <p>Magic Item ID: {item.id}</p>
+                                    </div>
+                                    <div className="bg-white p-3 m-5">
+                                        <p>Details: {item.oppDesc}</p>
+                                        <p>Vessel Material: {item.vesselMat}</p>
+                                        <p>Vessel Type: {item.vesselType}</p>
+                                        <p>Enchantments: {item.enchantments}</p>
+                                        <p>Written by: {item.writtenBy}</p>
+                                        <p>Date Written: {item.createdDate}</p>
+                                        <p>Last Player: {item.lastPlayer}</p>
+                                        <p>Hidden/Masked Detail: {item.hiddenDetail}</p>
+                                    </div>
+                                    <div className="bg-blue-200 p-3 m-5">
+                                        <p>Formal Details:</p>
+                                        <p>Formal Space Total: {item.formalSpaceTotal}</p>
                                     <p>Formal Space Remaining: {item.formalSpaceRemaining}</p>
-                                    <p>Last Player: {item.lastPlayer}</p>
-                                    <p>Hidden/Masked Detail: {item.hiddenDetail}</p>
+                                    <p>Earth Expires: {item.expirationDateEarth}</p>
+                                    <p>Celestrial Expires: {item.expirationDateCelestial}</p>
+                                    <p>Socket ID: {item.socketID}</p>
+                                    <p>Socket Amount: {item.socketAmount}</p>
+                                    </div>
+                                    <div className="bg-yellow-200 p-3 m-5">
+                                        <p>Edit Details:</p>
+                                        <p>Last Edit: {item.lastEditBy}</p>
+                                        <p>Reason for Edit: {item.lastEditReason}</p>
+                                        <p>Last Edit Date: {item.lastEditDate}</p>
+                                    </div>
                                 </div>
                             </li>
                         ))

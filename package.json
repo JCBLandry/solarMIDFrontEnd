@@ -14,13 +14,16 @@
     "react-scripts": "3.4.1",
     "sass": "^1.26.10",
     "serve": "^11.3.2",
+    "tailwindcss": "^1.6.0",
     "typescript": "^3.9.6"
   },
   "scripts": {
     "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts start",
-    "eject": "react-scripts eject"
+    "build": "react-scripts build && npm run build:css",
+    "test": "react-scripts start && npm run watch:css -w",
+    "eject": "react-scripts eject",
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/app.css",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/app.css -w"
   },
   "engines": {
     "node": "^14.5.0"
@@ -39,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.5",
+    "postcss-cli": "^7.1.1"
   }
 }
