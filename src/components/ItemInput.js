@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import NewItemForm from '../components/NewItemForm.js';
+import React from 'react';
 
 class ItemInput extends React.Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class ItemInput extends React.Component {
   }
 
   handleSubmit = (event) => {
-
+    // event.preventDefault();
     fetch('https://solar-mid-be.herokuapp.com/api/magicitems', {
         method: 'POST',
         headers: {
@@ -58,7 +57,44 @@ handlechange = (e) =>{
   
   render() {
     return (
-      <NewItemForm />
+      <div className="max-w-lg rounded overflow-hidden shadow-lg m-10 p-10 bg-gray-200">
+        <p className="p-3 font-bold">New Magic Item</p>
+        <form onSubmit={this.handleSubmit}>
+        <input onChange= {this.handlechange} type="text" placeholder="Item Name" name="name" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="OOP Description" name="oopDesc" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Vessel Material" name="vesselMat" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Vessel Type" name="vesselType" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Enchantments" name="enchantments" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Earth Expiration Date" name="expirationDateEarth" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Celestial Expiration Date" name="expirationDateCelestial" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Formal Space Remaining" name="formalSpaceRemaining" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Formal Space Total" name="formalSpaceTotal" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Socket ID" name="socketID" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Socket Amount" name="socketAmount" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+        
+        <input onChange= {this.handlechange} type="text" placeholder="Written By" name="writtenBy" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        {/* <input onChange= {this.handlechange} type="text" placeholder="Last Editor" name="lastEditBy" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Last Edit Reason" name="lastEditReason" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/> */}
+
+        <input onChange= {this.handlechange} type="text" placeholder="Player Last Owned" name="lastPlayer" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Hidden Details (Masked, Cursed. etc" name="hiddenDetails" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input type="submit" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"/>
+        </form>
+    </div>
     );
   }
 }
