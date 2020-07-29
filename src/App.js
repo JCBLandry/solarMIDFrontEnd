@@ -11,7 +11,7 @@ function App() {
   
   return (
     <Router>
-      <div className="App font-bold">
+      <div className="App">
         <Route exact path="/" component={ItemPage} />
         {/* 
           Build a PrivateRoute component that will 

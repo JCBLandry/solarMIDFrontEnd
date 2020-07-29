@@ -3,7 +3,7 @@ import React from 'react';
 function NewItemInput(props) {
         return (
       <div className="max-w-lg rounded overflow-hidden shadow-lg m-10 p-10 bg-gray-200">
-        <p className="p-3 ">New Magic Item</p>
+        <p className="p-3 font-bold">New Magic Item</p>
         <form onSubmit={props.handleSubmit}>
         <input onChange= {props.handlechange} type="text" placeholder="Item Name" name="name" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
 
