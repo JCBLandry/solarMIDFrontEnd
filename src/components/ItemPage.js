@@ -17,7 +17,7 @@ const ItemPage = () => {
       <h1 className="font-bold">Cerroneth Magic Item Database</h1>
       <div>
         <ItemInput />
-        <div className="max-w-lg rounded overflow-hidden shadow-lg m-10 p-10 bg-gray-200">
+        <div >
         <Item />
         </div>
       </div>

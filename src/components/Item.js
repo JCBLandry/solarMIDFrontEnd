@@ -52,7 +52,7 @@ class Item extends Component {
                     {
                         items.map(item => (
                             <li className="" key={item.id} align="start">
-                                <div>
+                                <div className="max-w-lg rounded overflow-hidden shadow-lg m-10 p-10 bg-gray-200">
                                     <div className="bg-red-200 p-3 m-5">
                                         <p className="font-bold">Name: {item.name}</p>
                                         <p>Magic Item ID: {item.id}</p>
