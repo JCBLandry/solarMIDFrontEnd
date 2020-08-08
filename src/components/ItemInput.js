@@ -29,7 +29,7 @@ class ItemInput extends React.Component {
   }
 
   handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     fetch('https://solar-mid-be.herokuapp.com/api/magicitems', {
         method: 'POST',
         headers: {

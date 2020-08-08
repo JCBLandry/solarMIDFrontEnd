@@ -8,7 +8,7 @@ class Item extends Component {
         this.state = {
             error : null,
             isLoaded : false,
-            items : []          
+            items : [],          
         };
     }
   
