@@ -144,21 +144,28 @@ render() {
                                         <p>Magic Item ID: {this.state.items.id}</p>
                                     </div>
                                     <div className="bg-white p-3 m-5">
-                                        <p className="font-bold">Details: {this.state.items.oppDesc}</p>
+                                        <p className="font-bold">Details:</p>
+                                        <p>Description: {this.state.items.oopDesc}</p>
+                                        <br></br>
                                         <p>Vessel Material: {this.state.items.vesselMat}</p>
                                         <p>Vessel Type: {this.state.items.vesselType}</p>
+                                        <br></br>
                                         <p>Enchantments: {this.state.items.enchantments}</p>
+                                        <br></br>
                                         <p>Written by: {this.state.items.writtenBy}</p>
                                         <p>Date Written: {this.state.items.createdDate}</p>
                                         <p>Last Player: {this.state.items.lastPlayer}</p>
+                                        <br></br>
                                         <p>Hidden/Masked Detail: {this.state.items.hiddenDetail}</p>
                                     </div>
                                     <div className="bg-blue-200 p-3 m-5">
                                         <p className="font-bold">Formal Details:</p>
                                         <p>Formal Space Total: {this.state.items.formalSpaceTotal}</p>
                                     <p>Formal Space Remaining: {this.state.items.formalSpaceRemaining}</p>
+                                    <br></br>
                                     <p>Earth Expires: {this.state.items.expirationDateEarth}</p>
                                     <p>Celestrial Expires: {this.state.items.expirationDateCelestial}</p>
+                                    <br></br>
                                     <p>Socket ID: {this.state.items.socketID}</p>
                                     <p>Socket Amount: {this.state.items.socketAmount}</p>
                                     </div>
