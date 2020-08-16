@@ -21,7 +21,8 @@ class ItemInput extends React.Component {
       lastEditReason: "",
       lastEditDate: Date(),
       lastPlayer: "",
-      hiddenDetail: ""
+      hiddenDetail: "",
+      display: "block"
      };
   }
   handleChange = (event) => {
@@ -54,10 +55,15 @@ handlechange = (e) =>{
   })
 }
 
-  
+editMode = (e) =>{
+  e.preventDefault()
+    this.setState = ({display: "hidden"})
+}
   render() {
     return (
       <div className="max-w-lg rounded overflow-hidden shadow-lg m-10 p-10 bg-gray-200">
+        <button onClick={this.editMode} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded ">New Item</button>
+        <div className={this.state.editing}>
         <p className="p-3 font-bold">New Magic Item</p>
         <form onSubmit={this.handleSubmit}>
         <input onChange= {this.handlechange} type="text" placeholder="Item Name" name="name" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
@@ -94,6 +100,7 @@ handlechange = (e) =>{
 
         <input type="submit" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"/>
         </form>
+        </div>
     </div>
     );
   }
