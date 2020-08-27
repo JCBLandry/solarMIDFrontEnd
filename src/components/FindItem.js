@@ -96,8 +96,6 @@ class FindItem extends React.Component{
       // event.preventDefault();
   }
     componentDidMount(){
-      // I will use fake api from jsonplaceholder website
-      // this return 100 items 
       fetch(`https://solar-mid-be.herokuapp.com/api/magicitems/${this.state.id}`)
       .then( response => response.json())
       .then(
