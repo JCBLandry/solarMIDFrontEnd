@@ -1,15 +1,32 @@
+// import { useState } from "react";
+
+// export function useFormFields(initialState) {
+//   const [fields, setValues] = useState(initialState);
+
+//   return [
+//     fields,
+//     function (e) {
+//       setValues({
+//         ...fields,
+//         [e.target.id]: e.target.value,
+//       });
+//     },
+//   ];
+// }
 import { useState } from "react";
 
-export function useFormFields(initialState) {
-  const [fields, setValues] = useState(initialState);
+export const useFormFields = (initialValue) => {
+  const [value, setValue] = useState(initialValue);
 
-  return [
-    fields,
-    function (event) {
-      setValues({
-        ...fields,
-        [event.target.id]: event.target.value,
-      });
+  return {
+    value,
+    setValue,
+    reset: () => setValue(""),
+    bind: {
+      value,
+      onChange: (e) => {
+        setValue(e.target.value);
+      },
     },
-  ];
-}
+  };
+};
