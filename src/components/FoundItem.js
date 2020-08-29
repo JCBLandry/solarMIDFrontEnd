@@ -1,50 +1,45 @@
 import React, { Component } from 'react';
-// get items from online api
-// it's return a json file
-class FoundItem extends Component {
-    constructor(props){
-        super(props);
-        // this.handleSubmit.bind(this)
-        this.state = {
-            error : null,
-            isLoaded : false,
-            items : [], 
-            id: props.id        
-        }
-    }
-  
-    componentDidMount(){
-        // I will use fake api from jsonplaceholder website
-        // this return 100 items 
-        fetch(`https://solar-mid-be.herokuapp.com/api/magicitems/${this.state.id}`)
-        .then( response => response.json())
-        .then(
-            // handle the result
-            (result) => {
-                this.setState({
-                    isLoaded : true,
-                    items : result
-                });
-            },
 
-            // Handle error 
-            (error) => {
-                this.setState({
-                    isLoaded: true,
-                    error
-                })
-            },
-        )
-    }
-  
-    render() {
-        const {error, isLoaded, items} = this.state;
+const FoundItem = () => {
+    const [ items, setItems ] = useState([])
+    const [id, handleID] = useFormFields({
+        id: 1,
+      });
+    
+    const handleFetch = (e) => {
+        axios.get(`https://solar-mid-be.herokuapp.com/api/magicitems/${id}`, fields)
+          .then(function (result) {
+            items : result
+          })
+          .catch(function (error) {
+              console.log(error)
+          }) 
+      }
+    
+    
+    // componentDidMount(){
+    //     // I will use fake api from jsonplaceholder website
+    //     // this return 100 items 
+    //     fetch(`https://solar-mid-be.herokuapp.com/api/magicitems/${this.state.id}`)
+    //     .then( response => response.json())
+    //     .then(
+    //         // handle the result
+    //         (result) => {
+    //             this.setState({
+    //                 isLoaded : true,
+    //                 items : result
+    //             });
+    //         },
 
-        if(error){
-            return <div>Error in loading</div>
-        }else if (!isLoaded) {
-            return <div>Loading ...</div>
-        }else{
+    //         // Handle error 
+    //         (error) => {
+    //             this.setState({
+    //                 isLoaded: true,
+    //                 error
+    //             })
+    //         },
+    //     )
+    // }
             return(
                 <div>
                     
@@ -88,7 +83,7 @@ class FoundItem extends Component {
             );
         }
       
-    }
+    
   }
   
   export default FoundItem;
