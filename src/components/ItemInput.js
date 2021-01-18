@@ -1,5 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useFormFields } from "./useFormFields"
 import { FormGroup, FormControl } from "react-bootstrap";
@@ -14,17 +13,10 @@ const ItemInput = () => {
 =======
 import React from 'react';
 
-=======
-import React from 'react';
-
->>>>>>> parent of 66944e2b... Refactored toggling!
 class ItemInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
->>>>>>> parent of 66944e2b... Refactored toggling!
-=======
 >>>>>>> parent of 66944e2b... Refactored toggling!
       name: "",
       oopDesc: "",
