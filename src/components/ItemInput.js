@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useFormFields } from "./useFormFields"
 import { FormGroup, FormControl } from "react-bootstrap";
@@ -9,6 +10,14 @@ const ItemInput = () => {
 
   const [fields, handleFieldChange ] = useFormFields(
     {
+=======
+import React from 'react';
+
+class ItemInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+>>>>>>> parent of 66944e2b... Refactored toggling!
       name: "",
       oopDesc: "",
       vesselMat: "",
@@ -26,163 +35,88 @@ const ItemInput = () => {
       lastEditReason: "",
       lastEditDate: Date(),
       lastPlayer: "",
-      hiddenDetail: ""
-    }
-  );
+      hiddenDetail: "",
+      display: "block"
+     };
+  }
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value});
+  }
 
-const handleSubmit = (e) => {
-  axios.post('https://solar-mid-be.herokuapp.com/api/magicitems', fields)
-    .then(function (response) {
+  handleSubmit = (event) => {
+    event.preventDefault();
+    fetch('https://solar-mid-be.herokuapp.com/api/magicitems', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // We convert the React state to JSON and send it as the POST body
+        body: JSON.stringify(this.state)
+      }).then(function(response) {
         console.log(response)
-    })
-    .catch(function (error) {
-        console.log(error)
-    }) 
+        return response.json();
+      });
+
+    // event.preventDefault();
+}
+handlechange = (e) =>{
+  e.preventDefault()
+
+  this.setState({
+          ...this.state.newitem,
+          [e.target.name] : e.target.value
+      
+  })
 }
 
+editMode = (e) =>{
+  e.preventDefault()
+    this.setState = ({display: "hidden"})
+}
+  render() {
     return (
-      
       <div className="max-w-lg rounded overflow-hidden shadow-lg m-10 p-10 bg-gray-200">
-        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded " onClick={()=> setDisplay("block")}>New Magic Item</button>
-        <div className={display}>
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-blue-700 rounded "onClick={()=> setDisplay("hidden")}>Cancel</button>
-        
+        <button onClick={this.editMode} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded ">New Item</button>
+        <div className={this.state.editing}>
         <p className="p-3 font-bold">New Magic Item</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
+        <input onChange= {this.handlechange} type="text" placeholder="Item Name" name="name" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="OOP Description" name="oopDesc" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Vessel Material" name="vesselMat" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Vessel Type" name="vesselType" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Enchantments" name="enchantments" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Earth Expiration Date" name="expirationDateEarth" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Celestial Expiration Date" name="expirationDateCelestial" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Formal Space Remaining" name="formalSpaceRemaining" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Formal Space Total" name="formalSpaceTotal" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Socket ID" name="socketID" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
+
+        <input onChange= {this.handlechange} type="text" placeholder="Socket Amount" name="socketAmount" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
         
-        <FormGroup controlId="name">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Item Name"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-        <FormGroup controlId="oopDesc">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="OOP Description"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
+        <input onChange= {this.handlechange} type="text" placeholder="Written By" name="writtenBy" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
 
-        <FormGroup controlId="vesselMat">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Vessel Material"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
+        {/* <input onChange= {this.handlechange} type="text" placeholder="Last Editor" name="lastEditBy" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
 
-        <FormGroup controlId="vesselType">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Vessel Type (Sword, Wand, Boots, etc.."
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
+        <input onChange= {this.handlechange} type="text" placeholder="Last Edit Reason" name="lastEditReason" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/> */}
 
-        <FormGroup controlId="enchantments">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Enchantments"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
+        <input onChange= {this.handlechange} type="text" placeholder="Player Last Owned" name="lastPlayer" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
 
-        <FormGroup controlId="expirationDateEarth">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Earth Expiration Date"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="expirationDateCelestial">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Celestial Expiration Date"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="formalSpaceRemaining">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Formal Space Remaining"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="formalSpaceTotal">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Formal Space Total"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="socketID">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Socket ID"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="socketAmount">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Socket Amount"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-        
-        <FormGroup controlId="writtenBy">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Written By"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-
-        {/* <input onChange={handleFieldChange} type="text" placeholder="Last Editor" name="lastEditBy" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
-
-        <input onChange={handleFieldChange} type="text" placeholder="Last Edit Reason" name="lastEditReason" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/> */}
-
-        <FormGroup controlId="lastPlayer">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Last Player Owned"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="hiddenDetail">
-          <FormControl
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
-            autoFocus
-            placeholder="Hidden Details (Cursed, Masked, Etc..)"
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
+        <input onChange= {this.handlechange} type="text" placeholder="Hidden Details (Masked, Cursed. etc" name="hiddenDetails" className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"/>
 
         <input type="submit" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"/>
         </form>
         </div>
     </div>
     );
+  }
 }
 export default ItemInput
